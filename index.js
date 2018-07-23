@@ -6,11 +6,13 @@ const bfs = require('./lib/fs')
 const vorpal = require('vorpal')()
 const ora = require('ora')
 const colors = require('colors')
+const art = require('./lib/art')
 
 /**
  * Run initialization stuff
  */
-console.log('Please make sure your AEM instance is completely shutdown before using ANY of the CLI commands'.underline.bold.yellow)
+console.log(art.green)
+console.log('Please make sure your AEM instance is completely shutdown before using ANY of the CLI commands'.bold.yellow)
 
 /**
  * BACKUP
@@ -81,6 +83,9 @@ vorpal
         finishAction()
       }
     } else { // backup does not exists, back it up!
+      spinner
+        .start()
+        .succed('it does not'.red)
       backItUp()
     }
   })
