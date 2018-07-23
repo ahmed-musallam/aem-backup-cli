@@ -16,7 +16,7 @@ console.log('Please make sure your AEM instance is completely shutdown before us
  * BACKUP
  */
 vorpal
-  .command('backup [backupName]', 'zip crx-quickstart in current directory and move zip to .backups folder in current directory')
+  .command('backup [backupName]', 'Archive crx-quickstart in current directory and move archive to crx-quickstart.backups folder in current directory')
   .alias('ba')
   .option('-f, --force', 'Force backup overwrite.')
   .validate(function (args) {
@@ -89,7 +89,7 @@ vorpal
  * LIST
  */
 vorpal
-  .command('list', 'list all available backups')
+  .command('list', 'List all available backups')
   .alias('ls')
   .action(function (args, actionFinished) {
     const backups = bfs.listBackups()
@@ -108,7 +108,7 @@ vorpal
  * DELETE
  */
 vorpal
-  .command('delete', 'list all available backups')
+  .command('delete', 'Delete a backup from available backups')
   .alias('de')
   .option('-f, --force', 'Force restore.')
   .action(function (args, actionFinished) {
