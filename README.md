@@ -1,6 +1,8 @@
 # aem-backup-cli
 A Developer CLI utility to backup local AEM instances, and save lives!
 
+> I have not tested this on windows, if you did, please let me know it works (on not).
+
 <p align="center">
   <br>
   <img src="screenshot.svg">
