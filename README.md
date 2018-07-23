@@ -1,4 +1,4 @@
-# aemb
+# aem-backup-cli
 A Developer CLI utility to backup local AEM instances, and save lives!
 
 <p align="center">
