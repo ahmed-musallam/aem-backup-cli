@@ -12,6 +12,7 @@
     "backup"
   ],
   "author": "Ahmed Musallam",
+  "repository": "https://github.com/ahmed-musallam/aem-backup-cli",
   "license": "ISC",
   "bin": {
     "aemb": "./index.js"
