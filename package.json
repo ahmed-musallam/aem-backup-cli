@@ -1,0 +1,34 @@
+{
+  "name": "aem-backup-cli",
+  "version": "1.0.0",
+  "description": "A backup utility for AEM local instances",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "aem",
+    "cli",
+    "backup"
+  ],
+  "author": "Ahmed Musallam",
+  "license": "ISC",
+  "bin": {
+    "aemb": "./index.js"
+  },
+  "dependencies": {
+    "colors": "^1.3.0",
+    "fs-extra": "^7.0.0",
+    "ora": "^3.0.0",
+    "tar": "^4.4.4",
+    "vorpal": "^1.12.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.2.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0"
+  }
+}
