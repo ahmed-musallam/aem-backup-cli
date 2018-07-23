@@ -85,7 +85,7 @@ vorpal
     } else { // backup does not exists, back it up!
       spinner
         .start()
-        .succed('it does not'.red)
+        .succeed('it does not'.green)
       backItUp()
     }
   })
