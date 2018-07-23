@@ -38,6 +38,7 @@ vorpal
       return bfs
         .createBackup(name, {
           onEntry: (path, stat) => {
+            if(!spinner.isSpinning) spinner.start();
             const size = stat.size ? stat.size : 0
             backupSize += size
             spinner.text = `[${bfs.formatBytes(backupSize)}]`.magenta + ` Backing up ${path}`.green
@@ -188,6 +189,7 @@ vorpal
           },
           restoreFail: () => spinner.start().fail(`whoops.. something went wrong while restoring... maybe check if the galaxy's are aligned? or the error log :)`.red),
           onEntry: (entry) => {
+            if(!spinner.isSpinning) spinner.start();
             const size = entry.size ? entry.size : 0
             restoreSize += size
             spinner.text = `[${bfs.formatBytes(restoreSize)}]`.magenta + `Restoring ${entry.path}`.green
