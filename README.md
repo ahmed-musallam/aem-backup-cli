@@ -9,16 +9,19 @@ A Developer CLI utility to backup local AEM instances, and save lives!
 
 ## Usage
 
-1. make sure you have node 8 (or later) installed 
-2. install the `aem-backup-cli` CLI `npm install -g aem-backup-cli`
-3. `cd` into your AEM instance directory (where `crx-quickstart` folder is)
-4. run `aemb`
+```bash
+$ npm install -g aem-backup-cli
+```
+`cd` into your AEM instance directory (where `crx-quickstart` folder is)
 
+```bash
+$ aemb
+```
 > **Your AEM instance must be completely SHUTDOWN before performing a backup**
 > 
 > If you break it, it's no my fault ;)
 
-Voila! you are now in the interactive CLI. can now enjoy all available commands, try `help` to see all commands. or `help [command]` to get help on a specific command.
+Voila! you are now in the interactive CLI. You can now enjoy all available commands, for example `help` prints:
 
 ```bash
 
@@ -34,6 +37,34 @@ aemb$ help
     restore [options]              Restore a backup from a list of available backups
 
 ```
+
+### Examples
+before anything:
+
+1. `cd` into your AEM instance directory (where `crx-quickstart` folder is)
+2. run `aemb` to enter the interactive cli
+
+```bash
+# creat backup named my-first-backup
+backup my-first-backup
+```
+
+```
+# List available backups
+list
+```
+```
+# restore a backup
+restore
+# a list of backups to chose from will appear
+```
+```
+# delete a backup
+delete
+# a list of backups to chose from will appear
+
+```
+
 
 ## Why?
 I break my AEM local instances more times that I can count, sometimes beyond repair. This usually means I have to start fresh and install content packages, update packages, my project code and do any other required manual configuration for my project... if you cant tell, this is tedious and I've decided: NO MORE!
