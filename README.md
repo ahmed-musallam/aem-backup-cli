@@ -3,7 +3,7 @@ A Developer CLI utility to backup local AEM instances, and save lives!
 
 <p align="center">
   <br>
-  <img src="screenshot.svg" width="500">
+  <img src="screenshot.svg">
   <br>
 </p>
 
