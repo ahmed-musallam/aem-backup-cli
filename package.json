@@ -1,6 +1,6 @@
 {
   "name": "aem-backup-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A backup utility for AEM local instances",
   "main": "index.js",
   "scripts": {
