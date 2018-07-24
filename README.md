@@ -1,3 +1,4 @@
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 # aem-backup-cli
 A Developer CLI utility to backup local AEM instances, and save lives!
 
