@@ -19,7 +19,7 @@ console.log('Please make sure your AEM instance is completely shutdown before us
  */
 vorpal
   .command('backup [backupName]', 'Archive crx-quickstart in current directory and move archive to crx-quickstart.backups folder in current directory')
-  .alias('ba')
+  .alias('b')
   .option('-f, --force', 'Force backup overwrite.')
   .validate(function (args) {
     if (args.backupName) return true
@@ -95,7 +95,7 @@ vorpal
  */
 vorpal
   .command('list', 'List all available backups')
-  .alias('ls')
+  .alias('l')
   .action(function (args, actionFinished) {
     const backups = bfs.listBackups()
     if (backups && backups.length) {
@@ -114,17 +114,17 @@ vorpal
  */
 vorpal
   .command('delete', 'Delete a backup from available backups')
-  .alias('de')
+  .alias('d')
   .option('-f, --force', 'Force restore.')
   .action(function (args, actionFinished) {
     const backups = bfs.listBackups()
     if (backups || backups.length > 0) {
       this.prompt(
         [{
-          type: 'list',
-          name: 'backupName',
+          type: 'checkbox',
+          name: 'backupNames',
           default: false,
-          message: 'Please pick a backup to delete'.bold.yellow,
+          message: 'Please check the backups you want to delete'.bold.yellow,
           choices: backups
         }, {
           type: 'confirm',
@@ -139,14 +139,17 @@ vorpal
           actionFinished()
           return
         }
-        const spinner = ora('Attempting to delete backup').start().info().start()
-        bfs.removeBackup(args.backupName).then(() => {
-          spinner.succeed(`deleted!`.green)
-          actionFinished()
-        }).catch(err => {
-          spinner.fail(`um, yeah, we could't delete the backups for some reason`.red)
-          throw err
-        })
+        const spinner = ora(`Attempting to delete backups:${answers.backupNames.map(b => ` [${b}] `)}` ).start().info().start()
+        const deletePromises = answers.backupNames.map(backupNme =>  bfs.removeBackup(backupNme))
+        Promise
+          .all(deletePromises)
+          .then((items) => {
+            spinner.succeed(`deleted!`.green)
+            actionFinished()
+          }).catch(err => {
+            spinner.fail(`ummm, yeah.. this is awkward; we could't delete the backups for some reason`.red)
+            throw err
+          })
       })
     } else {
       this.log('oh no! There are no backups available. try creating one :)'.bold.red)
@@ -158,7 +161,7 @@ vorpal
  */
 vorpal
   .command('restore', 'Restore a backup from a list of available backups')
-  .alias('re')
+  .alias('r')
   .option('-f, --force', 'Force restore.')
   .action(function (args, actionFinished) {
     const backups = bfs.listBackups()
